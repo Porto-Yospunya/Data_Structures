@@ -6,7 +6,7 @@ using namespace std;
 class Array {
     // variable
     private:
-        static const int max_size = 5;
+        static const int max_size = 50;
         int arr[max_size];
         int size;
     public: 
@@ -62,21 +62,70 @@ class Array {
             arr[index] = value;
             size++;
         }
+
+        void insertsort() {
+            for (int i = 1; i < size; i++) {
+                for (int j = i; j > 0; j--) {
+                    if (arr[j] < arr[j - 1]) {
+                        int tmp = arr[j];
+                        arr[j] = arr[j - 1];
+                        arr[j - 1] = tmp;
+                    }
+                }
+                display();
+            }
+        }
+
+        void selectionsort() {
+            for (int i = 0; i < size; i++) {
+                int min = i;
+                for (int j = i; j < size; j++) {
+                    if (arr[j] < arr[min]) {
+                        min = j;
+                    }
+                }
+                // swap
+                int tmp = arr[min];
+                arr[min] = arr[i];
+                arr[i] = tmp;
+                display();
+            }
+        }
+
+        void bubblesort() {
+            for (int i = 0; i < size; i++) {
+                bool swap = false;
+                for (int j = 0; j < size - i; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        int tmp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = tmp;
+                        swap = true;
+                    }
+                }
+
+                if (!swap) {
+                    break;
+                }
+                display();
+            }
+        }
 };
 
 int main() {
     Array a1 = Array(); // a1 => object
-    a1.insert(5); // insert
-    a1.insert(20); // insert
-    a1.insert(999); // insert
-    a1.display(); // output
-    printf("Index : %d\n", a1.search(5)); // search
-    a1.remove(999); // remove
-    a1.display(); // output
+    a1.insert(20);
+    a1.insert(10);
+    a1.insert(89);
+    a1.insert(30);
+    a1.insert(28);
+    a1.insert(53);
+    a1.insert(19);
+    a1.insert(9);
+    a1.insert(2);
+    a1.insert(48);
 
-    a1.insert(90);
-    a1.insertIndex(67, 1); // insert with index
-    a1.insertIndex(38, 3);
-    a1.display();
+    a1.bubblesort();
+
     return 0;
 }
