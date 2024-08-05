@@ -5,7 +5,7 @@ using namespace std;
 // class arrays
 class Array {
     // variable
-    private:
+    protected:
         static const int max_size = 50;
         int arr[max_size];
         int size;
@@ -111,21 +111,3 @@ class Array {
             }
         }
 };
-
-int main() {
-    Array a1 = Array(); // a1 => object
-    a1.insert(20);
-    a1.insert(10);
-    a1.insert(89);
-    a1.insert(30);
-    a1.insert(28);
-    a1.insert(53);
-    a1.insert(19);
-    a1.insert(9);
-    a1.insert(2);
-    a1.insert(48);
-
-    a1.bubblesort();
-
-    return 0;
-}
